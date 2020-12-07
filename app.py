@@ -48,7 +48,6 @@ def handle_message(event):
         alt_text='Buttons Template',
         template=ButtonsTemplate(
             title='你想吃哪邊的拉麵？',
-            text='ButtonsTemplate可以傳送text,uri',
             thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
             actions=[
                 MessageTemplateAction(
