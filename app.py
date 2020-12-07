@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Flask, abort, request
 
 # https://github.com/line/line-bot-sdk-python
+
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -17,24 +18,61 @@ handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 @app.route("/", methods=["GET", "POST"])
 def callback():
 
-    if request.method == "GET":
-        return "Hello Heroku"
-    if request.method == "POST":
-        signature = request.headers["X-Line-Signature"]
-        body = request.get_data(as_text=True)
-
+    if request.method == 'POST':
+        signature = request.META['HTTP_X_LINE_SIGNATURE']
+        body = request.body.decode('utf-8')
+ 
         try:
-            handler.handle(body, signature)
+            events = parser.parse(body, signature)  # 傳入的事件
         except InvalidSignatureError:
-            abort(400)
+            return HttpResponseForbidden()
+        except LineBotApiError:
+            return HttpResponseBadRequest()
+ 
+        for event in events:
+            if isinstance(event, MessageEvent):  # 如果有訊息事件
+ 
+                if event.message.text == "拉麵推薦":
+ 
+                    line_bot_api.reply_message(  # 回復傳入的訊息文字
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='Menu',
+                                text='請選擇地區',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='北部',
+                                        text='北部'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='中部',
+                                        text='中部'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='南部',
+                                        text='南部'
+                                    )
+                                    MessageTemplateAction(
+                                        label='東部',
+                                        text='東部'
+                                    )
+                                ]
+                            )
+                        )
+                    )
 
-        return "OK"
+        
+             else:
+                def handle_message(event):
+                    get_message = event.message.text
 
+                    # Send To Line
+                    reply = TextSendMessage(text=f"{get_message}")
+                    line_bot_api.reply_message(event.reply_token, reply)
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    get_message = event.message.text
-
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
+ 
+        return HttpResponse()
+    else:
+        return HttpResponseBadRequest()
