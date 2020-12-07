@@ -40,10 +40,10 @@ def handle_message(event):
     msg = event.message.text
     #print(type(msg))
     msg = msg.encode('utf-8')  
-    if event.message.text == "文字":
+    if event.message.text == "拉麵推薦":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
-    elif event.message.text == "Buttons Template":       
+    elif event.message.text == "錯誤回報":       
         buttons_template = TemplateSendMessage(
         alt_text='Buttons Template',
         template=ButtonsTemplate(
