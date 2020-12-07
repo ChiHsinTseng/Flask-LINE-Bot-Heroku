@@ -42,3 +42,29 @@ def handle_message(event):
     msg = msg.encode('utf-8')  
     if event.message.text == "文字":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+    
+    elif event.message.text == "拉麵推薦":
+        buttons_template = TemplateSendMessage(
+        alt_text='Buttons Template',
+        template=ButtonsTemplate(
+            title='你想吃哪邊的拉麵？',
+            text='ButtonsTemplate可以傳送text,uri',
+            thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
+            actions=[
+                MessageTemplateAction(
+                    label='ButtonsTemplate',
+                    text='1'
+                ),
+                URITemplateAction(
+                    label='VIDEO1',
+                    text='2'
+                ),
+                PostbackTemplateAction(
+                    label='postback',
+                    text='3',
+                    
+                )
+            ]
+        )
+    )
+    line_bot_api.reply_message(event.reply_token, buttons_template)
