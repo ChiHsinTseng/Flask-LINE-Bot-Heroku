@@ -72,4 +72,4 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
     
     elif event.message.text == "錯誤回報":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請點選以下連結：https://reurl.cc/14RmVW"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "請點選以下連結：https://reurl.cc/14RmVW"))
