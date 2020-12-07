@@ -40,29 +40,31 @@ def handle_message(event):
     msg = event.message.text
     #print(type(msg))
     msg = msg.encode('utf-8')  
-    if event.message.text == "拉麵推薦":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
-    elif event.message.text == "錯誤回報":       
+    if event.message.text == "拉麵推薦":       
         buttons_template = TemplateSendMessage(
         alt_text='Buttons Template',
         template=ButtonsTemplate(
-            title='這是ButtonsTemplate',
-            text='ButtonsTemplate可以傳送text,uri',
+            title='你想吃哪裡的拉麵？',
+            text='最好選近的不然你會餓死',
             thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
             actions=[
                 MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
+                    label='北部',
+                    text='北部'
                 ),
                  MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
+                    label='中部',
+                    text='中部'
                 ),
                 MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
-                ),              
+                    label='南部',
+                    text='南部'
+                ),
+                MessageTemplateAction(
+                    label='東部',
+                    text='東部'
+                ),  
 
             ]
         )
