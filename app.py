@@ -316,7 +316,7 @@ def handle_message(event):
        
     elif event.message.text == "中部":
             
-        flex_message1 = FlexSendMessage(
+        flex_message2 = FlexSendMessage(
         alt_text='中部的縣市',
         contents={
   "type": "bubble",
