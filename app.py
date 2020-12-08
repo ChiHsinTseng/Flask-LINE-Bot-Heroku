@@ -193,46 +193,24 @@ def handle_message(event):
         "size": "xl"
       },
       {
+        "type": "text",
+        "text": "請幫助我選擇縣市讓你更快得到推薦喔！",
+        "size": "xs",
+        "margin": "lg",
+        "color": "#888888"
+      },
+      {
         "type": "box",
-        "layout": "vertical",
+        "layout": "horizontal",
         "margin": "lg",
         "spacing": "sm",
         "contents": [
           {
-            "type": "text",
-            "text": "請幫助我選擇縣市讓你更快得到推薦喔！",
-            "size": "xs",
-            "color": "#888888"
-          }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "台北市",
-              "text": "台北市"
-            },
-            "style": "secondary",
-            "height": "sm"
-          }
-        ],
-        "margin": "md"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "message",
-              "label": "基隆市",
-              "text": "基隆市"
+              "text": "台北市",
+              "label": "台北市"
             },
             "style": "secondary",
             "height": "sm"
@@ -248,13 +226,24 @@ def handle_message(event):
             "height": "sm",
             "margin": "xxl"
           }
-        ],
-        "margin": "md"
+        ]
       },
       {
         "type": "box",
         "layout": "horizontal",
+        "margin": "lg",
+        "spacing": "sm",
         "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "text": "基隆市",
+              "label": "基隆市"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
           {
             "type": "button",
             "action": {
@@ -263,26 +252,27 @@ def handle_message(event):
               "text": "桃園市"
             },
             "style": "secondary",
-            "height": "sm"
-          },
-          {
-            "type": "button",
-            "action": {
-              "type": "message",
-              "label": "新竹市",
-              "text": "新竹市"
-            },
             "height": "sm",
-            "style": "secondary",
             "margin": "xxl"
           }
-        ],
-        "margin": "md"
+        ]
       },
       {
         "type": "box",
         "layout": "horizontal",
+        "margin": "lg",
+        "spacing": "sm",
         "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "text": "新竹市",
+              "label": "新竹市"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
           {
             "type": "button",
             "action": {
@@ -291,17 +281,29 @@ def handle_message(event):
               "text": "新竹縣"
             },
             "style": "secondary",
-            "height": "sm"
-          },
+            "height": "sm",
+            "margin": "xxl"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "contents": [
           {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "苗栗縣",
-              "text": "苗栗縣"
+              "text": "苗栗縣",
+              "label": "苗栗縣"
             },
             "style": "secondary",
-            "height": "sm",
+            "height": "sm"
+          },
+          {
+            "type": "text",
+            "text": " ",
             "margin": "xxl"
           }
         ],
