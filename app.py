@@ -42,36 +42,101 @@ def handle_message(event):
     msg = msg.encode('utf-8')  
 
     
-    if event.message.text == "拉麵推薦":       
-        buttons_template1 = TemplateSendMessage(
-        alt_text='你想吃哪裡的拉麵？',
-        template=ButtonsTemplate(
-            title='你想吃哪裡的拉麵？',
-            text='最好選近的不然你會餓死',
-            thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
-            actions=[
-                MessageTemplateAction(
-                    label='北部',
-                    text='北部'
-                ),
-                 MessageTemplateAction(
-                    label='中部',
-                    text='中部'
-                ),
-                MessageTemplateAction(
-                    label='南部',
-                    text='南部'
-                ),
-                MessageTemplateAction(
-                    label='東部',
-                    text='東部'
-                ),  
+    if event.message.text == "拉麵推薦":
+        {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://media.timeout.com/images/105665255/630/472/image.jpg",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    },
+    "position": "relative"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "你在哪裡？",
+        "weight": "bold",
+        "size": "xl",
+        "contents": []
+      },
+      {
+        "type": "text",
+        "text": "請選擇你在台灣的哪裡"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "北部",
+              "text": "北部"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "中部",
+              "text": "中部"
+            },
+            "style": "secondary",
+            "margin": "xxl",
+            "height": "sm"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "南部",
+              "text": "南部"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "東部",
+              "text": "東部"
+            },
+            "style": "secondary",
+            "margin": "xxl",
+            "height": "sm"
+          }
+        ],
+        "margin": "md"
+      }
+    ]
+  }
+}
 
-            ]
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(alt_text, contents)
         )
-    )
-        line_bot_api.reply_message(event.reply_token, buttons_template1)
- 
+
 
 
     elif event.message.text == "錯誤回報":
@@ -109,4 +174,3 @@ def handle_message(event):
         )
     )
         line_bot_api.reply_message(event.reply_token, buttons_template2) 
-
