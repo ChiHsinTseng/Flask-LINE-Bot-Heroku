@@ -167,32 +167,149 @@ def handle_message(event):
         
         
     elif event.message.text == "北部":       
-        buttons_template2 = TemplateSendMessage(
-        alt_text='你在哪個縣市？',
-        template=ButtonsTemplate(
-            title='你在哪個縣市？',
-            text='讓我知道你在哪個縣市會加速我找到適合的店喔！',
-            image_background_color = '#9B9B7A',
-            #thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
-            actions=[
-                MessageTemplateAction(
-                    label='基隆市',
-                    text='基隆市'
-                ),
-                 MessageTemplateAction(
-                    label='台北市',
-                    text='台北市'
-                ),
-                MessageTemplateAction(
-                    label='桃園市',
-                    text='桃園市'
-                ),
-                MessageTemplateAction(
-                    label='新竹縣',
-                    text='新竹縣'
-                ),  
-
-            ]
+        flex_message1 = FlexSendMessage(
+        alt_text='hello',
+        contents= {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "你在哪個縣市？",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "請幫助我選擇縣市讓你更快得到推薦喔！",
+            "size": "xs",
+            "color": "#888888"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "台北市",
+              "text": "台北市"
+            },
+            "style": "secondary",
+            "height": "sm"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "基隆市",
+              "text": "基隆市"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "新北市",
+              "text": "新北市"
+            },
+            "style": "secondary",
+            "height": "sm",
+            "margin": "xxl"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "桃園市",
+              "text": "桃園市"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "新竹市",
+              "text": "新竹市"
+            },
+            "height": "sm",
+            "style": "secondary",
+            "margin": "xxl"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "新竹縣",
+              "text": "新竹縣"
+            },
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "苗栗縣",
+              "text": "苗栗縣"
+            },
+            "style": "secondary",
+            "height": "sm",
+            "margin": "xxl"
+          }
+        ],
+        "margin": "md"
+      }
+    ]
+  }
+}
         )
-    )
-        line_bot_api.reply_message(event.reply_token, buttons_template2) 
+        
+        line_bot_api.reply_message(event.reply_token,flex_message1) 
