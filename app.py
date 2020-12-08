@@ -41,9 +41,10 @@ def handle_message(event):
     #print(type(msg))
     msg = msg.encode('utf-8')  
 
-    
     if event.message.text == "拉麵推薦":
-        {
+        flex_message = FlexSendMessage(
+        alt_text='hello',
+        contents={
   "type": "bubble",
   "hero": {
     "type": "image",
@@ -130,12 +131,11 @@ def handle_message(event):
       }
     ]
   }
-}
-
-        line_bot_api.reply_message(
-            event.reply_token,
-            FlexSendMessage(alt_text, contents)
+        
+        }
         )
+
+        line_bot_api.reply_message(event.reply_token,flex_message)
 
 
 
