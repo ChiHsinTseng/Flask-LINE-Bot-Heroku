@@ -71,7 +71,9 @@ def handle_message(event):
       },
       {
         "type": "text",
-        "text": "請選擇你在台灣的哪裡"
+        "text": "請選擇你在台灣的哪裡 ",
+        "size": "xs",
+        "color": "#888888"
       },
       {
         "type": "box",
@@ -130,9 +132,29 @@ def handle_message(event):
         "margin": "md"
       }
     ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "我要開定位",
+          "text": "我要開定位"
+        },
+        "style": "secondary",
+        "height": "sm",
+        "margin": "none",
+        "position": "relative",
+        "color": "#D9AE94"
+      }
+    ],
+    "spacing": "sm",
+    "margin": "none"
   }
-        
-        }
+}
         )
 
         line_bot_api.reply_message(event.reply_token,flex_message)
