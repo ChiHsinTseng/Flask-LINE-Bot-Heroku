@@ -77,29 +77,4 @@ def handle_message(event):
     elif event.message.text == "錯誤回報":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "請點選以下連結：https://reurl.cc/14RmVW"))
  
-
-
-    elif event.message.text == "北部":
-        buttonsTemplate = TemplateSendMessage(
-        alt_text='你在哪兒？',
-        template=ButtonsTemplate(
-            title='你在哪兒？',
-            text='幫我選擇你所在的城市吧！',
-            actions=[                              
-                MessageTemplateAction(
-                    label='基隆市',
-                    text='基隆市'
-                )
-                MessageTemplateAction(
-                    label='台北市',
-                    text='台北市'
-                )
-                MessageTemplateAction(
-                    label='桃園市',
-                    text='桃園市'
-                )                
-            ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
    
