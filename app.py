@@ -85,10 +85,11 @@ def handle_message(event):
         template=ButtonsTemplate(
             title='你在哪個縣市？',
             text='讓我知道你在哪個縣市會加速我找到適合的店喔！',
+            image_background_color = '#9B9B7A',
             thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
             actions=[
                 MessageTemplateAction(
-                  #  type = 'bubble'
+                    type = bubble
                     label='基隆市',
                     text='基隆市'
                 ),
