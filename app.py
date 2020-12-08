@@ -40,6 +40,7 @@ def handle_message(event):
     msg = event.message.text
     #print(type(msg))
     msg = msg.encode('utf-8')  
+
     
     if event.message.text == "拉麵推薦":       
         buttons_template = TemplateSendMessage(
@@ -70,15 +71,18 @@ def handle_message(event):
         )
     )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-    
+ 
+
+
     elif event.message.text == "錯誤回報":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "請點選以下連結：https://reurl.cc/14RmVW"))
  
+
+
     elif event.message.text == "北部":
-        print("Confirm template")       
-        Confirm_template = TemplateSendMessage(
+        buttonsTemplate = TemplateSendMessage(
         alt_text='你在哪兒？',
-        template=ConfirmTemplate(
+        template=ButtonsTemplate(
             title='你在哪兒？',
             text='幫我選擇你所在的城市吧！',
             actions=[                              
@@ -97,5 +101,5 @@ def handle_message(event):
             ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Confirm_template)
+        line_bot_api.reply_message(event.reply_token, buttons_template)
    
