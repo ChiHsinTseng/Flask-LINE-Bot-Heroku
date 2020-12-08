@@ -413,7 +413,7 @@ def handle_message(event):
         )
         
         line_bot_api.reply_message(event.reply_token,flex_message2) 
-        
+    
     elif event.message.text == "南部":
         flex_message3 = FlexSendMessage(
         alt_text='南部的縣市',
@@ -534,16 +534,4 @@ def handle_message(event):
         )
         
         line_bot_api.reply_message(event.reply_token,flex_message3) 
-       
     
- '''
-    elif event.message.text == "南部":
-        flex_message3 = FlexSendMessage(
-        alt_text='南部的縣市',
-        contents=
-
-        )
-        
-        line_bot_api.reply_message(event.reply_token,flex_message3) 
- '''
-
