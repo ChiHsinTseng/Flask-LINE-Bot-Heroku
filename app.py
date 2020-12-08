@@ -74,33 +74,28 @@ def handle_message(event):
     elif event.message.text == "錯誤回報":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "請點選以下連結：https://reurl.cc/14RmVW"))
  
-    elif event.message.text == "北部":       
-        buttons_template = TemplateSendMessage(
-        alt_text='Buttons Template',
-        template=ButtonsTemplate(
-            title='你想知道哪個縣市？',
-            text='test',
-            thumbnail_image_url='https://1.bp.blogspot.com/-ZWe-zRa3stE/XlTGFl7NksI/AAAAAAAAvmY/fR_RrfO6GAYdQSirnCC-bqvelI7LkUnYwCEwYBhgL/s1600/ACA5ABA1-3DDE-4042-8205-2572D5AFD0B5.JPG',
-            actions=[
+    elif event.message.text == "北部":
+        print("Confirm template")       
+        Confirm_template = TemplateSendMessage(
+        alt_text='你在哪兒？',
+        template=ConfirmTemplate(
+            title='你在哪兒？',
+            text='幫我選擇你所在的城市吧！',
+            actions=[                              
                 MessageTemplateAction(
-                    label='北部',
-                    text='北部'
-                ),
-                 MessageTemplateAction(
-                    label='中部',
-                    text='中部'
-                ),
+                    label='基隆市',
+                    text='基隆市'
+                )
                 MessageTemplateAction(
-                    label='南部',
-                    text='南部'
-                ),
+                    label='台北市',
+                    text='台北市'
+                )
                 MessageTemplateAction(
-                    label='東部',
-                    text='東部'
-                ),  
-
+                    label='桃園市',
+                    text='桃園市'
+                )                
             ]
         )
     )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
    
